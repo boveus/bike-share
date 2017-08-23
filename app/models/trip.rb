@@ -104,4 +104,10 @@ class Trip < ActiveRecord::Base
     parse_string
   end
 
+  def self.count_by_date(date, zip_code = 94107)
+     joins(:zip_code)
+     .where(trip_date: date)
+     .count
+  end
+
 end
