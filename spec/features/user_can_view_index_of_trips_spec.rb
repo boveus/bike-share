@@ -15,7 +15,7 @@ describe "User visits '/trips'" do
     visit('/trips')
 
     expect(page).to have_content("All Trips")
-    expect(page.all("h3").count).to eq(30)
+    expect(page.all("h4").count).to eq(30)
 
   end
   it "and can delete a record and still show thirty" do
@@ -34,6 +34,6 @@ describe "User visits '/trips'" do
 
     click_button('Delete', match: :first)
     expect(page).to have_content("All Trips")
-    expect(page.all("h3").count).to eq(30)
+    expect(page.all("h4").count).to eq(30)
     end
 end
