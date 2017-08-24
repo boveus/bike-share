@@ -91,11 +91,15 @@ class Weather < ActiveRecord::Base
     return conditions
   end
 
+  # def self.find_weather_by_date(date)
+  #   find_by(date: date.to_s)
+  # end
+
   def self.highest_rides_weather
-    where(:date => Trip.most_trips_by_date[0].to_s).first
+    where(:date => Trip.most_trips_by_date[0])
   end
 
   def self.fewest_rides_weather
-    where(:date => Trip.fewest_trips_by_date[0].to_s).first
+    where(:date => Trip.fewest_trips_by_date[0])
   end
 end

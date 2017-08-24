@@ -11,6 +11,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/dashboard' do
+    @highest = Weather.highest_rides_weather.first
+    @fewest = Weather.fewest_rides_weather.first
     erb :"trips/trips_dashboard"
   end
 
@@ -145,13 +147,11 @@ class BikeShareApp < Sinatra::Base
     erb :station_dashboard
   end
 
-  get '/conditions-dashboard' do
+  get '/weather/dashboard' do
     @by_max_temp = Weather.find_max_temp_increment
     @by_precipitation = Weather.find_precipitation_increment
     @by_wind_speed = Weather.find_wind_speed_increment
     @by_visibility = Weather.find_visibility_increment
-    @highest = Weather.highest_rides_weather
-    @fewest = Weather.fewest_rides_weather
     erb :"conditions/weather_dashboard"
   end
 
