@@ -61,6 +61,11 @@ div {
   float: left;
 }
 
+#chart_div {
+  width: 400px;
+  margin: auto;
+}
+
 #map {
   height: 400px;
   width: 45%;
