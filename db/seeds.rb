@@ -96,7 +96,7 @@ Ccsv.foreach('db/csv/weather.csv') do |row|
 end
 
 t2 = Time.now
-total_time = t1.min - t2.min
+total_time = t1 - t2
 
 puts "There are now #{Station.count} rows in the stations table"
 puts "There are now #{Trip.count} rows in the trips table"
