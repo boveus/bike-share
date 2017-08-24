@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-class StationSpec < Rspec::Base
-  Rspec.describe "Iteration 3" do
-    it "Calculates total stations" do
-      total = Station.total
-
-      expect(total).to_eq(84)
-    end
-
-    it "Calculates average available bikes per station" do
-      average = Station.average_bikes_per_station
-
-      expect(average).to_eq(...)
-    end
-
-    it "Calculates available bikes for station" do
-      station = Station.find_by_id(1)
-      average = station.available_bikes
-
-      expect(average).to_eq(...)
-    end
-
-    it "Calculates most bikes available at station" do
-      max = Station.max_bikes
-
-      expect(max).to_eq(...)
-    end
-  end
-=======
 describe Station do
   describe "Validations" do
     it "is invalid without a name" do
@@ -83,4 +54,3 @@ describe Station do
     end
   end
 end
->>>>>>> 24a49870e6bc992736b3a1f220055ec28ac3fd9f
