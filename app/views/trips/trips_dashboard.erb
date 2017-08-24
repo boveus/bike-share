@@ -1,6 +1,29 @@
 <head>
   <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
   <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+
+    google.charts.load('current', {'packages':['corechart']});
+
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.arrayToDataTable([
+        ['Customer Type', 'Percent'],
+        ['Subscriber', 44],
+        ['Customer', 56]]);
+
+      var options = {'title':'Subscribers and Customers',
+                    'width':400,
+                    'height':300};
+
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+  </script>
 </head>
 <body>
   <nav class="navbar navbar-inverse">
@@ -73,6 +96,8 @@
   <div class="row">
     <h5>Month by Month breakdown of number of rides with subtotals for each year: <%= Trip.parse_yearly_trips_as_html %> </h5>
   </div>
+
+  <div id="chart_div"></div>
 
 <a href='/trips'><button class="btn btn-primary">All Trips</button></a>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
