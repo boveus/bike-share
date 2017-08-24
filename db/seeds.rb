@@ -8,6 +8,8 @@ require './app/models/city'
 require './app/models/station'
 require './app/models/weather'
 
+t1 = Time.now
+
 def compute_subscription_id(subscription_string)
   if subscription_string[0] == "S"
     1
@@ -48,15 +50,14 @@ CSV.foreach('./db/csv/station.csv', :headers => true, :encoding => 'ISO-8859-1')
                  )
   end
 
-  puts "There are now #{Station.count} rows in the stations table."
-
 
 header = true
 Ccsv.foreach('db/csv/trip.csv') do |row|
-  if header == false && row[0].to_i < 200000
+  if header == false
       start_station = Station.find_or_create_by(name: row[3])
       end_station = Station.find_or_create_by(name: row[6])
-    trip = Trip.new(duration: row[1],
+
+      trip = Trip.new(duration: row[1],
                     start_station: start_station.id,
                     end_station: end_station.id,
                     bike_id: row[8],
@@ -67,14 +68,12 @@ Ccsv.foreach('db/csv/trip.csv') do |row|
       trip.zip_code = ZipCode.find_or_create_by(zip_code: row[10])
       trip.save
 
-      puts "Adding trip #{row[0]} to the table"
-
   end
   header = false
 
 end
 
-puts "There are now #{Trip.count} rows in the trips table"
+
 
 header = true
 Ccsv.foreach('db/csv/weather.csv') do |row|
@@ -94,7 +93,12 @@ Ccsv.foreach('db/csv/weather.csv') do |row|
 
   end
   header = false
-
 end
 
+t2 = Time.now
+total_time = t1.min - t2.min
+
+puts "There are now #{Station.count} rows in the stations table"
+puts "There are now #{Trip.count} rows in the trips table"
 puts "There are now #{Weather.count} rows in the weather table"
+puts "Elapsed time #{total_time} minutes."
