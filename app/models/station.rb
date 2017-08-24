@@ -1,4 +1,3 @@
-require 'pry'
 class Station < ActiveRecord::Base
   belongs_to :city
   belongs_to :trip

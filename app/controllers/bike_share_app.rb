@@ -1,4 +1,5 @@
 require 'pry'
+
 class BikeShareApp < Sinatra::Base
   include WillPaginate::Sinatra::Helpers
 
@@ -10,6 +11,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips/dashboard' do
+    @highest = Weather.highest_rides_weather.first
+    @fewest = Weather.fewest_rides_weather.first
     erb :"trips/trips_dashboard"
   end
 
@@ -114,4 +117,76 @@ class BikeShareApp < Sinatra::Base
     redirect '/stations'
   end
 
+  get '/trips' do
+    @trips = Trip.all
+    erb :trip_index
+  end
+
+  post '/trips' do
+    @trip = Trip.new(params)
+    trip.save
+    redirect'/trips'
+  end
+
+  get '/trips/new' do
+    erb :trip_new
+  end
+
+  get '/trips/:id' do
+    @trip = Trip.find(params["id"])
+    erb :show_trip
+
+  end
+
+  get '/trips/:id/edit' do
+    erb :trip_edit
+  end
+
+  get 'station-dashboard' do
+    @total_stations = Station.count
+    erb :station_dashboard
+  end
+
+  get '/weather/dashboard' do
+    @by_max_temp = Weather.find_max_temp_increment
+    @by_precipitation = Weather.find_precipitation_increment
+    @by_wind_speed = Weather.find_wind_speed_increment
+    @by_visibility = Weather.find_visibility_increment
+    erb :"conditions/weather_dashboard"
+  end
+
+  get '/conditions' do
+    @conditions = Weather.all
+    erb :"conditions/weather_index"
+  end
+
+  get '/conditions/new' do
+    erb :"conditions/new_weather"
+  end
+
+  get '/conditions/:id' do
+    @condition = Weather.find(params["id"])
+    erb :"conditions/show_weather"
+  end
+
+  post '/conditions' do
+    @condition = Weather.create(params["condition"])
+    redirect '/conditions'
+  end
+
+  get '/conditions/:id/edit' do
+    @condition = Weather.find(params["id"])
+    erb :"conditions/edit_weather"
+  end
+
+  put '/conditions/:id' do
+    @condition = Weather.find(params["id"])
+    @condition.update(params["condition"])
+    redirect "/conditions/#{params['id']}"
+  end
+
+  delete '/conditions/:id' do
+    Weather.delete(params["id"])
+    redirect '/conditions'
+  end
 end
