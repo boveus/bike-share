@@ -1,4 +1,3 @@
-require 'pry'
 class Station < ActiveRecord::Base
   belongs_to :city
   belongs_to :trip
@@ -57,8 +56,4 @@ class Station < ActiveRecord::Base
   def self.formatted_oldest_station
     oldest_station.pluck(:name).join(", ")
   end
-  # 
-  # def get_lat
-  #   Station.lat
-  # end
 end

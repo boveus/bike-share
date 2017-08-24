@@ -61,7 +61,11 @@
     <h5>User subscription type breakout with both count and percentage: Subscribers: <%= Trip.subscriber_percentage.first %> and Non-subscribers: <%= Trip.subscriber_percentage.second %>   </h5>
   </div>
   <div class="row">
-    <h5>Single date with the highest number of trips with a count of those trips: <%= Trip.most_trips_by_date.first %> had the most trips with <%= Trip.most_trips_by_date.second %> trips. </h5>
+    <h5>Single date with the highest number of trips with a count of those trips: <%= Trip.most_trips_by_date.first %> had the most trips with <%= Trip.most_trips_by_date.second %> trips.
+    </h5>
+    <h5> Weather results on dates with most and least rides: </h5>
+        Day with highest number of rides: <a href="/conditions/<%= @highest.id %>"><%= @highest.date %></a><br>
+        Day with lowest number of rides: <a href="/conditions/<%= @fewest.id %>"><%= @fewest.date %></a>
   </div>
   <div class="row">
     <h5>Single date with the lowest number of trips with a count of those trips: <%= Trip.fewest_trips_by_date.first %> had the most trips with <%= Trip.fewest_trips_by_date.second %> trips.</h5>
@@ -69,6 +73,7 @@
   <div class="row">
     <h5>Month by Month breakdown of number of rides with subtotals for each year: <%= Trip.parse_yearly_trips_as_html %> </h5>
   </div>
+
 <a href='/trips'><button class="btn btn-primary">All Trips</button></a>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
