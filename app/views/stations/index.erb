@@ -1,4 +1,5 @@
 <head>
+  <title>Bike Share</title>
   <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
   <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
 </head>
@@ -46,9 +47,6 @@
       <% @stations.each do |station| %>
         <tr>
           <td><%= station.name %></td>
-          <!-- <td><%= station.dock_count %></td>
-          <td><%= station.city.city %></td>
-          <td><%= station.installation_date %></td> -->
           <td><a href="/stations/<%= station.id %>"><button class="btn btn-info">More Info</button></a></td>
           <td><a href="/stations/<%= station.id %>/edit"><button class="btn btn-success">Edit</button></td>
           <td>

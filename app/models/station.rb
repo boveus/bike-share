@@ -57,8 +57,8 @@ class Station < ActiveRecord::Base
   def self.formatted_oldest_station
     oldest_station.pluck(:name).join(", ")
   end
-  # 
-  # def get_lat
-  #   Station.lat
-  # end
+
+  def self.over_25_bikes
+    where(:bikes => 25..30)
+  end
 end

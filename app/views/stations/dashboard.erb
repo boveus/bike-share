@@ -1,4 +1,5 @@
 <head>
+  <title>Bike Share</title>
   <link rel = "stylesheet" type = "text/css" href = <%= url("/main.css")%> />
   <link href=<%= url("/css/bootstrap.min.css") %> rel="stylesheet">
 </head>
@@ -42,7 +43,7 @@
     <h1>Station Analysis</h1>
   </header>
 
-  <div class="container">
+  <div class="dashboard-info">
     <div class="row">
       <h5>Total stations: <p><%= @stations.count %></h5>
     </div>
@@ -69,8 +70,11 @@
     </div>
   </div>
 
-  <a href='/stations'><button class="btn btn-primary">All Stations</button></a>
+  <div id="chart_div" class="chart"></div>
 
+  <div class="spacer">
+    <a href='/stations'><button class="btn btn-primary">All Stations</button></a>
+  </div>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
