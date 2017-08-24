@@ -44,15 +44,15 @@
     <form action="/stations" method="POST">
       <div class="row forminput">
         <h4>Name:</h4>
-        <input type="text" name="station[name]" id="name">
+        <input type="text" name="station[name]">
       </div>
       <div class="row forminput">
         <h4>Dock Count:</h4>
-        <input type="text" name="station[dock_count]" id="dockcount">
+        <input type="text" name="station[dock_count]">
       </div>
       <div class="row forminput">
         <h4>City:</h4>
-        <select name="station[city_id]" id="cities">
+        <select name="station[city_id]">
           <% @cities.each do |city| %>
             <option value=<%= city.id %>><%= city.city %></option>
           <% end %>
@@ -60,7 +60,15 @@
       </div>
       <div class="row forminput">
         <h4>Installation Date:</h4>
-        <input type="text" name="station[installation_date]" id="installdate">
+        <input type="text" name="station[installation_date]">
+      </div>
+      <div class="row forminput">
+        <h4>Latitude:</h4>
+        <input type="text" name="station[lat]">
+      </div>
+      <div class="row forminput">
+        <h4>Longitude:</h4>
+        <input type="text" name="station[long]">
       </div>
       <div class="spacer">
         <input class="btn btn-success" type="submit" value="Create New Station" />

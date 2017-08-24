@@ -1,7 +1,7 @@
 describe "User visits '/trips/1'" do
   it "and sees the header of trip id" do
   #fixture
-  trip = Trip.create(
+  Trip.create(
     duration: 60,
     start_station: 54,
     end_station: 66,

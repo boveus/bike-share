@@ -73,6 +73,16 @@
             <h4>Current city: <%= @station.city.city %></h4>
     </div>
 
+    <div class="row">
+      <h4>Latitude:</h4>
+      <input type="float" name="station[lat]" value="<%= @station.lat %>"/><br>
+    </div>
+
+    <div class="row">
+      <h4>Longitude:</h4>
+      <input type="float" name="station[long]" value="<%= @station.long %>"/><br>
+    </div>
+
     <div class="spacer">
       <button type="submit" class="btn btn-success">Submit</button>
       <a href="/stations/"><button class="btn btn-danger">Cancel</button></a>
